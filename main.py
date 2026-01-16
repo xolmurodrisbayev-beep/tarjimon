@@ -2,6 +2,9 @@ from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import CommandStart
 from aiogram.types import FSInputFile
 from aiogram.client.default import DefaultBotProperties
+from aiogram.client.session.aiohttp import AiohttpSession
+
+
 
 import asyncio
 import logging
@@ -11,9 +14,12 @@ from tarnslator import tarjimon
 
 logging.basicConfig(level=logging.INFO)
 
+
+PROXY_URL = "http://proxy.server:3128"
+session = AiohttpSession(proxy=PROXY_URL)
 TOKEN = "8359480287:AAFCdEX3yE4JAVpRv8UKx9C6Pn0ODQBAC5k"
 
-bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
+bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"), session=session)
 
 dp = Dispatcher()
 

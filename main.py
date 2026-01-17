@@ -8,6 +8,7 @@ from aiogram.types import FSInputFile
 from aiogram.client.default import DefaultBotProperties
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
+from aiogram.client.session.aiohttp import AiohttpSession
 
 from gtts import gTTS
 from googletrans import Translator
@@ -18,6 +19,10 @@ logging.basicConfig(level=logging.INFO)
 
 TOKEN = "8359480287:AAFCdEX3yE4JAVpRv8UKx9C6Pn0ODQBAC5k"
 ADMIN_ID = 6586504067
+
+PROXY_URL = "http://proxy.server:3128"
+session = AiohttpSession(proxy=PROXY_URL)
+
 
 bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher()
